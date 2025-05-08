@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- //GO TO W3 SCHOOL bootstrap  then in get started go to Two Basic Bootstrap Pages -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css"> <!-- 🔗 External CSS link -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Registration</title>
+</head>
+<body>
+      <!-- now create registration form -->
+      <div class="container">
+        <h2 class="text-center">Registration Form</h2>
+        <form>
+        <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter name"
+        name="name">
+        </div>
+        <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email"
+        name="email" required>
+        </div>
+        <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter password"
+        name="password"> </div>
+        <button type="button" onclick="saveData()" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-warning">Reset</button>
+        <div class="text-center">
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+        </div> </form></div></body>
+        <script>
+        function saveData() {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+        let user_records = JSON.parse(localStorage.getItem("users")) || [];
+        if (user_records.some(user => user.email === email)) {
+        alert("Email already registered!");
+        } else {
+        user_records.push({ "name": name, "email": email, "password": password });
+        localStorage.setItem("users", JSON.stringify(user_records));
+        alert("Registration Successful!");
+        window.location.href = "login.html";
+        } } </script></html>
+        
+</body>
+</html>
