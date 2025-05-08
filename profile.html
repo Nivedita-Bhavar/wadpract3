@@ -1,0 +1,53 @@
+Profile:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Profile</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+body {
+background-color: #f8f9fa;
+}
+.container {
+max-width: 500px;
+margin-top: 50px;
+background: white;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+text-align: center;
+position: relative;
+}
+.logout-btn {
+position: absolute;
+top: 10px;
+right: 10px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<button class="btn btn-danger logout-btn" onclick="Logout();">Logout</button>
+<h2>Profile</h2>
+<hr>
+<h3>Welcome</h3>
+<h4><script>document.write(localStorage.getItem('name'));</script></h4>
+</div>
+</body>
+<script>
+let name = localStorage.getItem('name') || '';
+if (!name) {
+alert('You need to login first!');
+window.location.href = "login.html";
+}
+function Logout() {
+localStorage.removeItem('name');
+localStorage.removeItem('email');
+window.location.href = "login.html";
+}</script>
+</html>
